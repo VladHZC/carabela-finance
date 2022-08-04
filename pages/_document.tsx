@@ -21,8 +21,9 @@ class MyDocument extends Document {
 					<link rel={'preconnect'} href={'https://fonts.gstatic.com'} crossOrigin={'true'} />
 					<link rel={'preconnect'} href={'https://rawcdn.githack.com'} crossOrigin={'true'} />
 					<link href={'https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;700&display=swap'} rel={'stylesheet'} />
+					<link href={'https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap'} rel={'stylesheet'} />
 				</Head>
-				<body className={'min-h-screen bg-neutral-200 transition-colors duration-150'} data-theme={'macarena'}> 
+				<body className={'min-h-screen bg-primary-600 transition-colors duration-150'} data-theme={'macarena'}> 
 					<Main />
 					<NextScript />
 				</body>

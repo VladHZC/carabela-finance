@@ -1,20 +1,25 @@
-import	React, {ReactElement}										from	'react';
-import	{AppProps}													from	'next/app';
-import	Image														from	'next/image';
-import	Link														from	'next/link';
-import	{useRouter}													from	'next/router';
-import	{AnimatePresence, motion}									from	'framer-motion';
-import	{KBarProvider, Action, createAction, useRegisterActions}	from	'kbar';
-import	{useWeb3, WithYearn}										from	'@yearn-finance/web-lib/contexts';
-import	{Dropdown}													from	'@yearn-finance/web-lib/components';
-import	{truncateHex}												from	'@yearn-finance/web-lib/utils';
-import	{NetworkEthereum, NetworkFantom, SocialDiscord,
-	SocialGithub, SocialTwitter}									from	'@yearn-finance/web-lib/icons';
-import	useYearn, {YearnContextApp}									from	'contexts/useYearn';
-import	Meta														from	'components/Meta';
-import	KBar														from	'components/Kbar';
-import	KBarButton													from	'components/KBarButton';
-import	LogoMacarena												from	'components/icons/LogoMacarena';
+import	React, {ReactElement} from	'react';
+import	{AppProps} from	'next/app';
+import	Image from	'next/image';
+import	Link from	'next/link';
+import	{useRouter} from	'next/router';
+import	{AnimatePresence, motion} from	'framer-motion';
+import	{KBarProvider, Action, createAction, useRegisterActions} from	'kbar';
+import	{useWeb3, WithYearn} from	'@yearn-finance/web-lib/contexts';
+import	{Dropdown} from	'@yearn-finance/web-lib/components';
+import	{truncateHex} from	'@yearn-finance/web-lib/utils';
+import	{
+	NetworkEthereum,
+	NetworkFantom,
+	SocialDiscord,
+	SocialGithub,
+	SocialTwitter
+} from	'@yearn-finance/web-lib/icons';
+import	useYearn, {YearnContextApp} from	'contexts/useYearn';
+import	Meta from	'components/Meta';
+import	KBar from	'components/Kbar';
+import	KBarButton from	'components/KBarButton';
+import	LogoCarabela from	'components/icons/LogoCarabela.svg';
 
 import	'../style.css';
 
@@ -58,22 +63,31 @@ function	Header(): ReactElement {
 	}, [chainID, isActive]);
 
 	return (
-		<header className={'flex static inset-x-0 top-0 flex-row mb-5 w-full h-24 macarena--header bg-neutral-0'}>
-			<div className={'mx-auto w-full h-full rounded-sm bg-neutral-0'}>
-				<div className={'mx-auto w-full max-w-6xl h-full'}>
-					<div className={'grid grid-cols-3 justify-center w-full h-full'}>
-						<div aria-label={'search'} className={'hidden justify-start items-center md:flex'}>
-							<KBarButton />
-						</div>
-						<div aria-label={'logo'} className={'flex col-span-3 justify-center items-center md:col-span-1'}>
+		<header className={'macarena--header bg-primary-0 static inset-x-0 top-0 mb-5 flex h-32 w-full flex-row'}>
+			<div className={'bg-primary-0 h-full w-full rounded-sm'}>
+				<div className={'h-full w-full px-10'}>
+					<div className={'grid h-full w-full grid-cols-3 justify-between'}>
+					
+						<div aria-label={'logo'} className={'col-span-3 flex pt-3 md:col-span-1'}>
 							<Link href={'/'}>
 								<div>
-									<LogoMacarena className={'cursor-pointer'} />
+									<Image src={LogoCarabela} width={100} height={100} className={'cursor-pointer'} />
 								</div>
 							</Link>
+							<div className={'text-white text-4xl bold pt-2'}>
+								<div>
+									{'CARABELA'}
+								</div>
+								<div>
+									{'finance'}
+								</div>
+							</div>
 						</div>
-						<div aria-label={'wallet and network'} className={'hidden flex-row justify-end items-center space-x-4 md:flex'}>
-							<div className={'hidden flex-row items-center space-x-4 md:flex'}>
+						<div aria-label={'wallet and network'} className={'col-span-3 flex flex-row items-center justify-end space-x-4 md:col-span-2 md:flex'}>
+							<div aria-label={'search'} className={'col-span-3 mr-3 flex items-center justify-start md:col-span-1 md:flex text-white'}>
+								<KBarButton />
+							</div>
+							<div className={'color-accent hidden flex-row items-center space-x-4 md:flex text-white'}>
 								<Dropdown
 									defaultOption={options[0]}
 									options={options}
@@ -88,7 +102,7 @@ function	Header(): ReactElement {
 										openLoginModal();
 								}}
 								data-variant={'light'}
-								className={'truncate yearn--button'}>
+								className={'yearn--button truncate'}>
 								{walletIdentity}
 							</button>
 						</div>
@@ -113,7 +127,7 @@ function	WithLayout(props: AppProps): ReactElement {
 	return (
 		<div id={'app'}>
 			<Header />
-			<div className={'flex flex-col mx-auto mb-0 w-full max-w-6xl'}>
+			<div className={'mx-auto mb-0 flex w-full max-w-6xl flex-col'}>
 				<AnimatePresence exitBeforeEnter onExitComplete={handleExitComplete}>
 					<motion.div
 						key={router.pathname}
@@ -169,7 +183,7 @@ function	AppWrapper(props: AppProps): ReactElement {
 		shortcut: ['g'],
 		keywords: 'github code',
 		section: 'Social',
-		icon: <SocialGithub className={'w-9 h-9'} />,
+		icon: <SocialGithub className={'h-9 w-9'} />,
 		perform: async (): Promise<unknown> => window.open('https://github.com/yearn', '_blank')
 	},
 	{
@@ -178,7 +192,7 @@ function	AppWrapper(props: AppProps): ReactElement {
 		shortcut: ['t'],
 		keywords: 'social contact dm',
 		section: 'Social',
-		icon: <SocialTwitter className={'w-9 h-9'} />,
+		icon: <SocialTwitter className={'h-9 w-9'} />,
 		perform: async (): Promise<unknown> => window.open('https://twitter.com/iearnfinance', '_blank')
 	},
 	{
@@ -187,7 +201,7 @@ function	AppWrapper(props: AppProps): ReactElement {
 		shortcut: ['d'],
 		keywords: 'discord',
 		section: 'Social',
-		icon: <SocialDiscord className={'w-9 h-9'} />,
+		icon: <SocialDiscord className={'h-9 w-9'} />,
 		perform: async (): Promise<unknown> => window.open('https://discord.yearn.finance', '_blank')
 	}];
 

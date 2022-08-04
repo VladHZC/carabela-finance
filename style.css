@@ -2,38 +2,47 @@
 @import '@yearn-finance/web-lib/dist/style.css';
 
 * {
-	@apply font-mono;
+	font-family: Goldman;
 }
 
 :root body[data-theme="macarena"] {
 	--default-rounded: 2px;
-	--color-neutral-0: 279 37% 17%;
-	--color-neutral-100: 279 36% 27%;
-	--color-neutral-200: 279 36% 34%;
-	--color-neutral-300: 279 36% 40%;
-	--color-neutral-400: 279 37% 17%;
+	--color-neutral-0: 0 0% 90%;
+	--color-neutral-100:  0, 1%, 73%;
+	--color-neutral-200:  0 0% 90%%;
+	--color-neutral-300:  0 0% 90%;
+	--color-neutral-400:  0 0% 90%;
 	--color-neutral-500: 0 0% 90%;
-	--color-neutral-700: 0 0% 100%;
+	
+	/* secondary */
+	--color-neutral-700: 216 28% 18%;
 
-	--color-primary-100: 279 36% 34%;
-	--color-primary-200: 279 36% 32%;
+	--color-primary-100: 0 0% 0%;
+	--color-primary-200: 0 0% 0%;
 	/* --color-primary-200: 225 47% 41%; */
-	--color-primary-500: 49 100% 50%;
-	--color-primary-600: 49 100% 47%;
-	--color-accent-500: 49 100% 50%;
-	--color-accent-600: 49 100% 47%;
+	--color-primary-500: 0 0% 0%;
 
-	@apply bg-neutral-200;
+	/* main */
+	--color-primary-600: 0 0% 0%;
+
+	--color-accent-500: 0 0% 100%;
+
+	/* accents */
+	--color-accent-600:  0 0% 100%;
+
+	@apply bg-black;
 
 	& .yearn--button {
 		@apply h-10;
+		@apply text-black;
 		&[data-variant="filled"] {
 			@apply border border-black;
 		}
 	}
 
 	& .yearn--card {
-		@apply border border-neutral-200 !shadow-none;
+		@apply border-4 border-white !shadow-none;
+		@apply bg-black;
 	}
 
 	& .yearn--searchBox-wrapper {
@@ -87,7 +96,7 @@
 	& .macarena--header {
 		@apply pb-1 rounded-b-default bg-neutral-400;
 		& > div {
-			@apply bg-neutral-100;
+			@apply bg-neutral-700;
 		}
 	}
 	& .macarena--filter {
@@ -107,15 +116,18 @@
 		}
 	}
 	& .macarena--vaultCard {
-		@apply rounded-default bg-neutral-100;
+		@apply rounded-default bg-primary-600;
+		@apply text-white;
 	}
 
 	& .yearn--modal {
 		@apply md:max-w-2xl;
+		@apply text-white;
 	}
 
 	& .yearn--modalLogin-card {
-		@apply bg-neutral-0 hover:bg-accent-500;
+		@apply bg-primary-600 hover:bg-accent-500;
+		@apply text-white;
 		& > b {@apply transition-colors;}
 		& > p {@apply transition-colors;}
 		&:hover {

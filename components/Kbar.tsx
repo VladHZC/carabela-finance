@@ -4,7 +4,7 @@
 ** See kbar for more info: https://kbar.vercel.app/docs/getting-started
 ***************************************************************************/
 
-import	React, {ReactElement}		from	'react';
+import	React, {ReactElement} from	'react';
 import {
 	ActionId,
 	KBarAnimator,

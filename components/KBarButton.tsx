@@ -1,6 +1,6 @@
-import	React, {ReactElement}	from 'react';
-import	{Search}				from '@yearn-finance/web-lib/icons';
-import	{useKBar}				from 'kbar';
+import React, {ReactElement} from 'react';
+import {Search} from '@yearn-finance/web-lib/icons';
+import {useKBar} from 'kbar';
 
 /* 🔵 - Yearn Finance ******************************************************
 ** Uses the kbar package to be able to search for some elements accross the
