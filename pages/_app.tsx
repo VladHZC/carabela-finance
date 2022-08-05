@@ -74,7 +74,7 @@ function	Header(): ReactElement {
 									<Image src={LogoCarabela} width={100} height={100} className={'cursor-pointer'} />
 								</div>
 							</Link>
-							<div className={'text-white text-4xl bold pt-2'}>
+							<div className={'text-white text-4xl font-bold pt-2'}>
 								<div>
 									{'CARABELA'}
 								</div>

@@ -1,7 +1,7 @@
-# Macarena Finance
+# Carabela Finance
 ![](./public/og.png)
 
-Macarena finance is a simple UI for Yearn Finance, made to be forked!
+Carabela finance is a simple UI for Yearn Finance
 
 Running your own instance of Yearn makes you eligible to earn fees on top of all deposits made through your UI. See information on how partnership and profit-sharing work at our [Partner Docs](https://docs.yearn.finance/partners/introduction#profit-share-model)
 

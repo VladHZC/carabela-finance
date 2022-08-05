@@ -56,56 +56,50 @@ function	OverviewCard({currentVault, address}: {currentVault?: TVault, address: 
 		return (`${format.amount(_value)} $`);
 	}, [shareOfVault, currentVault?.decimals, priceOfVault]);
 
+	const renderBalance = (balance: any, label: string): ReactElement => (
+		<div>
+			<p className={'text-sm text-white'}>{label}</p>
+			<b className={'text-lg'}>
+				{balance.isZero() ? '-' : format.bigNumberAsAmount(
+					balance,
+					currentVault?.decimals,
+					2
+				)}
+			</b>
+		</div>
+	);
+
 	/* 🔵 - Yearn Finance ******************************************************
 	** Main render of the page.
 	**************************************************************************/
 	return (
-		<Card className={'col-span-1 md:col-span-3'}>
-			<div className={'flex flex-row items-start mb-6 space-x-6'}>
+		<Card className={'col-span-1 p-4 text-white md:col-span-3'}>
+			<div className={'mb-6 flex flex-row items-start space-x-6 p-4 text-white'}>
 				{currentVault?.token?.icon ? <Image
 					src={currentVault?.token?.icon || ''}
 					width={80}
 					height={80}
-					className={'min-w-[80px]'} /> : <div className={'w-[80px] h-[80px] rounded-full bg-neutral-0'} />}
+					className={'min-w-[80px]'} /> : <div className={'h-[80px] w-[80px] rounded-full bg-neutral-0'} />}
 				<div>
-					<h2 className={'-mt-1 -mb-2 text-xl font-bold md:text-5xl text-neutral-700'}>
+					<h2 className={'-mt-1 -mb-2 text-xl font-bold  text-white md:text-5xl'}>
 						{currentVault?.name || ''}
 					</h2>
 					<AddressWithActions
-						className={'text-sm font-normal '}
+						className={'text-sm font-normal text-white'}
 						address={toAddress(address)} />
 				</div>
 
 			</div>
-			<div className={'mb-4 space-y-2'}>
+			<div className={'mb-4 space-y-2 p-4'}>
 				<b>{'About'}</b>
 				<p
-					className={'text-neutral-700/70'}
 					dangerouslySetInnerHTML={{__html: parseMarkdown(currentVault?.description || '')}} />
 			</div>
-			<div className={'grid grid-cols-2 gap-2 md:grid-cols-4'}>
+			<div className={'grid grid-cols-2 gap-2 md:grid-cols-4 p-4'}>
+				{renderBalance(balanceOfToken, 'Your token balance')}
+				{renderBalance(shareOfVault, 'Your vault shares')}
 				<div>
-					<p className={'text-xs text-neutral-700/50'}>{'Your token balance'}</p>
-					<b className={'text-lg'}>
-						{balanceOfToken.isZero() ? '-' : format.bigNumberAsAmount(
-							balanceOfToken,
-							currentVault?.decimals,
-							2
-						)}
-					</b>
-				</div>
-				<div>
-					<p className={'text-xs text-neutral-700/50'}>{'Your vault shares'}</p>
-					<b className={'text-lg'}>
-						{shareOfVault.isZero() ? '-' : format.bigNumberAsAmount(
-							shareOfVault,
-							currentVault?.decimals,
-							2
-						)}
-					</b>
-				</div>
-				<div>
-					<p className={'text-xs text-neutral-700/50'}>{'Your shares value'}</p>
+					<p className={'text-xs text-white'}>{'Your shares value'}</p>
 					<b className={'text-lg'}>
 						{getShareValue()}
 					</b>

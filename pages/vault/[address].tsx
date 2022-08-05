@@ -44,22 +44,22 @@ function	Vault(): ReactElement {
 					price={currentVault?.tvl?.price || 0}
 					chainID={chainID} />
 			</div>
-			<div className={'grid grid-cols-1 gap-4 mt-4 md:grid-cols-5'}>
+			<div className={'grid grid-cols-1 gap-4 mt-4 md:grid-cols-5 text-white'}>
 				<div className={'col-span-1 md:col-span-3'}>
 					<Card>
-						<div className={'mb-4'}>
+						<div className={'mb-4 p-4'}>
 							<b>{'Strategies'}</b>
 						</div>
 						{currentVault?.strategies && (
 							<section aria-label={'strategies'} className={'space-y-4'}>
 								{currentVault.strategies.map((strategy: any): ReactElement => (
 									<div key={strategy.address} className={'py-2 px-4 border border-neutral-100 rounded-default'}>
-										<b className={'font-mono text-typo-primary'}>{strategy.display_name || strategy.name}</b>
+										<b className={'text-typo-primary text-white'}>{strategy.display_name || strategy.name}</b>
 										<AddressWithActions
 											address={strategy.address}
-											className={'text-sm font-normal'} />
+											className={'text-sm font-normal text-white'} />
 										<p
-											className={'mt-4 text-xs line-clamp-4'}
+											className={'mt-4 text-md line-clamp-4 text-white'}
 											dangerouslySetInnerHTML={{__html: parseMarkdown((strategy?.description || '').replace(/{{token}}/g, currentVault.token.symbol) || '')}} />
 									
 									</div>

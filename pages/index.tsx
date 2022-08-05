@@ -2,7 +2,7 @@ import	React, {ReactElement}	from	'react';
 import	Image					from	'next/image';
 import	Link					from	'next/link';
 import	{motion}				from	'framer-motion';
-import	{Button, Card}			  from	'@yearn-finance/web-lib/components';
+import	{Card}			  from	'@yearn-finance/web-lib/components';
 import	* as utils				from	'@yearn-finance/web-lib/utils';
 import	useYearn				from	'contexts/useYearn';
 import type {TVault}			from	'contexts/useYearn.d';
@@ -21,21 +21,16 @@ function	VaultCard({currentVault}: {currentVault: TVault}): ReactElement {
 		{label: 'All Time', time: apy.points.inception}
 	];
 
-	const slashMotion = {
-		rest: {x: -8, y: -8},
-		hover: {x: -4, y: -4}
-	};
-
 	const renderTextRow = (label: string, val: string): ReactElement => (
 		<div className={'flex flex-row items-center text-white'}>
-			<div className={'mr-3 text-xs'}>{label}</div>
-			<div className={'text-l bold'}>{val}</div>
+			<div className={'mr-3 text-sm'}>{label}</div>
+			<div className={'text-lg font-bold'}>{val}</div>
 		</div>
 	);
 	const growth = (label: string, growthTime: number): ReactElement => (
 		<div className={'flex flex-col'}>
-			<p className={'text-xs text-neutral-100'}>{label}</p>
-			<b className={'text-white'}>{`${getGrowth(growthTime)}%`}</b>
+			<p className={'text-xs text-neutral-400'}>{label}</p>
+			<b className={'text-white text-md'}>{`${getGrowth(growthTime)}%`}</b>
 		</div>
 	);
 	const renderGrowth = growthList.map(({label, time}): ReactElement => growth(label, time));
@@ -43,18 +38,18 @@ function	VaultCard({currentVault}: {currentVault: TVault}): ReactElement {
 	return (
 		<div className={'w-full'}>
 			<Link href={`/vault/${address}`}>
-				<Card className={'col-span-1 md:col-span-3 p-4 rounded-xl bg-black'}>
-					<div className={'cursor-pointer'}>
+				<Card className={'col-span-1 md:col-span-3 rounded-xl bg-black'}>
+					<div className={'cursor-pointer px-6 pb-2 pt-4'}>
 						<div className={'flex w-full flex-row items-start justify-between'}>
 							<div className={'flex flex-col'}>
-								<div className={'min-h-[32px] min-w-[32px] md:min-h-[80px] md:min-w-[80px]'}>
+								<div className={'min-h-[32px] min-w-[32px] md:min-w-[80px]'}>
 									<Image
 										src={token.icon}
 										width={60}
 										height={60} />
 								</div>
 								<div>
-									<h2 className={'text-md font-bold text-neutral-100 md:text-2xl'}>
+									<h2 className={'text-md font-bold text-white md:text-2xl'}>
 										{token.display_name || token.name}
 									</h2>
 								</div>
@@ -62,10 +57,10 @@ function	VaultCard({currentVault}: {currentVault: TVault}): ReactElement {
 							<div className={'flex flex-col'}>
 								{renderTextRow('APY', getAPY(apy.net_apy))}
 								{renderTextRow('TVL', `$${utils.format.amount(tvl.tvl / 1000_000, 2, 2)}m`)}
-								<div className={'mt-4'}>
-									<Button className={'min-w-[120px] rounded-md h-6 text-black'}>
-										{'Jump in'}
-									</Button>
+								<div className={'mt-1'}>
+									<button className={'min-w-[140px] rounded-sm h-7 text-black bg-white'}>
+										{'Details'}
+									</button>
 								</div>
 							</div>
 						</div>
@@ -73,8 +68,8 @@ function	VaultCard({currentVault}: {currentVault: TVault}): ReactElement {
 
 					<div className={'macarena--vaultCard space-y-6'}>
 						<div>
-							<b className={'text-sm text-neutral-700'}>{'Annualized Growth'}</b>
-							<div className={'mt-2 grid grid-cols-3 gap-4'}>
+							<div className={'text-md bg-neutral-700 p-2 pl-4 w-full text-neutral-400'}>{'Annualized Growth'}</div>
+							<div className={'mt-2 grid grid-cols-3 gap-4 px-6 pb-4 pt-2 rounded-xl'}>
 								{renderGrowth}
 							</div>
 						</div>
