@@ -12,7 +12,7 @@ module.exports = withPWA({
 	},
 	env: {
 		//You need to change this one to your own ID!
-		PARTNER_ID_ADDRESS: '0x7eE89ddd96603669eB0CC92D81f221b756813872',
+		PARTNER_ID_ADDRESS: '0x0F7318E9D1EAfe53C3bFD7EE774ce33020Cf53F3',
 
 		/* 🔵 - Yearn Finance **************************************************
 		** Config over the RPC
