@@ -1,4 +1,4 @@
-# Carabela Finance
+# Carabela Finance (forked and adapted by pirate asyaasha) 
 ![](./public/og.png)
 
 Carabela finance is a simple UI for Yearn Finance
